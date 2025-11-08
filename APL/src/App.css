@@ -1,0 +1,22 @@
+
+.container {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+.title {
+  color: #1a237e;
+  margin-bottom: 30px;
+}
+
+.external-box {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
