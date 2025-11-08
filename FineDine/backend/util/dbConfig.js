@@ -1,18 +1,24 @@
 const mongoose = require("mongoose");
 
-// Load environment variables
+// Load environment variables from .env (ignored in git)
 require('dotenv').config();
 
-// MongoDB URI from environment variables
-const mongoURI = process.env.MONGO_URI || 'mongodb+srv://indrajapatil2204_db_user:ReserveDine22@cluster0.fcixtu1.mongodb.net/indrajasDineReserve22?retryWrites=true&w=majority&appName=Cluster0';
+// Prefer MONGO_URI from environment; otherwise use a safe local default
+const mongoURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/finedine';
 
-async function connectToMongo(){
+async function connectToMongo() {
     try {
-        await mongoose.connect(mongoURI);
-        console.log("Connected to MongoDB successfully");
+        await mongoose.connect(mongoURI, {
+            // options are safe defaults for modern mongoose versions;
+            // mongoose v6+ uses these by default but specifying them is harmless.
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Connected to MongoDB");
     } catch (err) {
         console.error("MongoDB connection error:", err);
         throw err;
     }
 }
+
 module.exports = connectToMongo;
